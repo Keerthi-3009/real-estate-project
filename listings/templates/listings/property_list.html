@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Property Listings</title></head>
+<body>
+    <h1>Available Properties</h1>
+    {% for property in properties %}
+        <p><a href="{% url 'property_detail' property.pk %}">{{ property.title }}</a></p>
+    {% empty %}
+        <p>No properties yet.</p>
+    {% endfor %}
+</body>
+</html>
