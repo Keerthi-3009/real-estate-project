@@ -31,6 +31,11 @@
         <div class="col-md-4 mb-4">
             <div class="card h-100">
                 <div class="card-body">
+
+                    {% if property.images.first %}
+    <img src="{{ property.images.first.image.url }}" class="card-img-top" alt="{{ property.title }}">
+{% endif %}
+
                     <h5 class="card-title">{{ property.title }}</h5>
                     <p class="card-text">₹{{ property.price }}</p>
                     <a href="{% url 'property_detail' property.pk %}" class="btn btn-primary">View Details</a>
