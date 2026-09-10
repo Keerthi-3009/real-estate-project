@@ -7,8 +7,27 @@
 <body>
 <div class="container mt-4">
     <h1 class="mb-4">Available Properties</h1>
+
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-4">
+            {{ filter.form.title.label_tag }}
+            {{ filter.form.title }}
+        </div>
+        <div class="col-md-3">
+            {{ filter.form.min_price.label_tag }}
+            {{ filter.form.min_price }}
+        </div>
+        <div class="col-md-3">
+            {{ filter.form.max_price.label_tag }}
+            {{ filter.form.max_price }}
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Search</button>
+        </div>
+    </form>
+
     <div class="row">
-        {% for property in properties %}
+        {% for property in filter.qs %}
         <div class="col-md-4 mb-4">
             <div class="card h-100">
                 <div class="card-body">
@@ -19,7 +38,7 @@
             </div>
         </div>
         {% empty %}
-        <p>No properties yet.</p>
+        <p>No properties found.</p>
         {% endfor %}
     </div>
 </div>
