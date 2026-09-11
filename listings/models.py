@@ -15,13 +15,18 @@ class Amenity(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "Amenities"
+
 
 class Property(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     price = models.DecimalField(max_digits=12, decimal_places=2)
     location = models.CharField(max_length=200)
+    address = models.CharField(max_length=255, blank=True, help_text="Full address for map display")
     agent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='properties')
+
     property_type = models.ForeignKey(
         PropertyType,
         on_delete=models.CASCADE
@@ -30,6 +35,11 @@ class Property(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name_plural = "Properties"
+
+
 
 
 class PropertyImage(models.Model):
@@ -50,6 +60,9 @@ class Inquiry(models.Model):
 
     def __str__(self):
         return f"Inquiry from {self.name}"
+
+    class Meta:
+        verbose_name_plural = "Inquiries"
 
 
 class Favorite(models.Model):

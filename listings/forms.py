@@ -5,7 +5,7 @@ from .models import Inquiry
 class PropertyForm(forms.ModelForm):
     class Meta:
         model = Property
-        fields = ['title', 'description', 'price', 'property_type']
+        fields = ['title', 'description', 'price', 'property_type', 'address']
 
 
 
