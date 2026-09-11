@@ -8,6 +8,7 @@
 {% if user == property.agent %}
     <a href="{% url 'property_edit' property.pk %}" class="btn btn-warning mb-3">Edit</a>
     <a href="{% url 'property_delete' property.pk %}" class="btn btn-danger mb-3">Delete</a>
+    <a href="{% url 'property_inquiry' property.pk %}" class="btn btn-success mb-3">Contact Agent</a>
 {% endif %}
 <h1>{{ property.title }}</h1>
 <p><strong>Price:</strong> ₹{{ property.price }}</p>

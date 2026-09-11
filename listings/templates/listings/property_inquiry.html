@@ -1,0 +1,10 @@
+{% extends 'listings/base.html' %}
+{% block title %}Contact Agent{% endblock %}
+{% block content %}
+<h1 class="mb-4">Contact Agent about "{{ property.title }}"</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Send Inquiry</button>
+</form>
+{% endblock %}

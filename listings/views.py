@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Property, PropertyImage
+from .models import Property, PropertyImage, Inquiry
 from .filters import PropertyFilter
 from django.contrib.auth.decorators import login_required
-from .forms import PropertyForm
+from .forms import PropertyForm, InquiryForm
 
 
 def property_list(request):
@@ -71,3 +71,16 @@ def property_edit(request, pk):
     else:
         form = PropertyForm(instance=property)
     return render(request, 'listings/property_form.html', {'form': form, 'editing': True})
+
+def property_inquiry(request, pk):
+    property = get_object_or_404(Property, pk=pk)
+    if request.method == 'POST':
+        form = InquiryForm(request.POST)
+        if form.is_valid():
+            inquiry = form.save(commit=False)
+            inquiry.property = property
+            inquiry.save()
+            return redirect('property_detail', pk=property.pk)
+    else:
+        form = InquiryForm()
+    return render(request, 'listings/property_inquiry.html', {'form': form, 'property': property})
