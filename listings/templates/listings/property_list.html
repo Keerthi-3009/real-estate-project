@@ -1,42 +1,10 @@
 {% extends 'listings/base.html' %}
-{% block title %}Available Properties{% endblock %}
+{% block title %}Add Property{% endblock %}
 {% block content %}
-<h1 class="mb-4">Available Properties</h1>
-
-<form method="get" class="row g-3 mb-4">
-    <div class="col-md-4">
-        {{ filter.form.title.label_tag }}
-        {{ filter.form.title }}
-    </div>
-    <div class="col-md-3">
-        {{ filter.form.min_price.label_tag }}
-        {{ filter.form.min_price }}
-    </div>
-    <div class="col-md-3">
-        {{ filter.form.max_price.label_tag }}
-        {{ filter.form.max_price }}
-    </div>
-    <div class="col-md-2 d-flex align-items-end">
-        <button type="submit" class="btn btn-primary w-100">Search</button>
-    </div>
+<h1 class="mb-4">Add a New Property</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Save Property</button>
 </form>
-
-<div class="row">
-    {% for property in filter.qs %}
-    <div class="col-md-4 mb-4">
-        <div class="card h-100">
-            {% if property.images.first %}
-                <img src="{{ property.images.first.image.url }}" class="card-img-top" alt="{{ property.title }}">
-            {% endif %}
-            <div class="card-body">
-                <h5 class="card-title">{{ property.title }}</h5>
-                <p class="card-text">₹{{ property.price }}</p>
-                <a href="{% url 'property_detail' property.pk %}" class="btn btn-primary">View Details</a>
-            </div>
-        </div>
-    </div>
-    {% empty %}
-    <p>No properties found.</p>
-    {% endfor %}
-</div>
 {% endblock %}
