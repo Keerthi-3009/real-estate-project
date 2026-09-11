@@ -1,15 +1,20 @@
 from django.contrib import admin
-from .models import Property, PropertyType, PropertyImage, Amenity, Inquiry, Favorite
+from .models import (
+    Property,
+    PropertyType,
+    PropertyImage,
+    Amenity,
+    Inquiry,
+    Favorite,
+    SellerSubmission,
+    SellerSubmissionImage,
+)
 
-class PropertyImageInline(admin.TabularInline):
-    model = PropertyImage
-    extra = 1
-
-class PropertyAdmin(admin.ModelAdmin):
-    inlines = [PropertyImageInline]
-
-admin.site.register(Property, PropertyAdmin)
+admin.site.register(Property)
 admin.site.register(PropertyType)
+admin.site.register(PropertyImage)
 admin.site.register(Amenity)
 admin.site.register(Inquiry)
 admin.site.register(Favorite)
+admin.site.register(SellerSubmission)
+admin.site.register(SellerSubmissionImage)

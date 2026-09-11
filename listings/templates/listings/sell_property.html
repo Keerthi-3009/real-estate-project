@@ -1,0 +1,28 @@
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <div class="mb-3">
+        <label for="property_images" class="form-label">
+            Property Images
+        </label>
+
+        <input
+            type="file"
+            name="property_images"
+            id="property_images"
+            class="form-control"
+            accept="image/*"
+            multiple
+        >
+
+        <small class="text-muted">
+            You can upload multiple images of your property.
+        </small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Submit
+    </button>
+</form>

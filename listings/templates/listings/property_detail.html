@@ -1,40 +1,282 @@
-{% extends 'listings/base.html' %}
+    {% extends 'listings/base.html' %}
+
 {% block title %}{{ property.title }}{% endblock %}
+
 {% block content %}
 
+<a href="{% url 'property_list' %}"
+   class="btn btn-outline-secondary mb-4">
+    ← Back to Properties
+</a>
 
-<a href="{% url 'property_list' %}" class="btn btn-secondary mb-3">← Back to listings</a>
 
-{% if user == property.agent %}
-    <a href="{% url 'property_edit' property.pk %}" class="btn btn-warning mb-3">Edit</a>
-    <a href="{% url 'property_delete' property.pk %}" class="btn btn-danger mb-3">Delete</a>
-    <a href="{% url 'property_inquiry' property.pk %}" class="btn btn-success mb-3">Contact Agent</a>
-{% endif %}
-<h1>{{ property.title }}</h1>
-<p><strong>Price:</strong> ₹{{ property.price }}</p>
-<p><strong>Description:</strong> {{ property.description }}</p>
-{% if property.address %}
+<!-- Property Title -->
+
 <div class="mb-4">
-    <h5>Location</h5>
-    <iframe
-        width="100%"
-        height="300"
-        style="border:0"
-        loading="lazy"
-        allowfullscreen
-        src="https://www.google.com/maps?q={{ property.address|urlencode }}&output=embed">
-    </iframe>
-</div>
-{% endif %}
 
-<div class="row mt-4">
-    {% for img in property.images.all %}
-    <div class="col-md-3 mb-3">
-        <img src="{{ img.image.url }}" class="img-fluid rounded" alt="{{ property.title }}">
+    <h1 class="display-5 fw-bold text-primary">
+        {{ property.title }}
+    </h1>
+
+    <p class="text-muted fs-5">
+        📍 {{ property.address }}
+    </p>
+
+</div>
+
+
+<!-- Image Gallery -->
+
+<div class="card detail-card p-3 mb-4">
+
+    <h3 class="section-title mb-3">
+        📸 Property Photos
+    </h3>
+
+    <div class="row g-3">
+
+        {% for img in property.images.all %}
+
+            <div class="col-lg-4 col-md-6">
+
+                <img src="{{ img.image.url }}"
+                     class="gallery-img"
+                     alt="{{ property.title }}">
+
+            </div>
+
+        {% empty %}
+
+            <div class="col-12">
+
+                <div class="alert alert-warning">
+                    No images uploaded for this property.
+                </div>
+
+            </div>
+
+        {% endfor %}
+
     </div>
-    {% empty %}
-    <p>No images uploaded for this property.</p>
-    {% endfor %}
+
+</div>
+
+
+<!-- Property Information -->
+
+<div class="row g-4">
+
+    <div class="col-lg-8">
+
+        <div class="card detail-card p-4">
+
+            <h3 class="section-title mb-4">
+                🏡 Property Details
+            </h3>
+
+
+            <div class="row mb-4">
+
+                <div class="col-md-6">
+
+                    <div class="p-3 bg-light rounded mb-3">
+
+                        <small class="text-muted">
+                            Property Name
+                        </small>
+
+                        <h5>
+                            {{ property.title }}
+                        </h5>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="p-3 bg-light rounded mb-3">
+
+                        <small class="text-muted">
+                            Price
+                        </small>
+
+                        <h4 class="text-success">
+                            ₹{{ property.price }}
+                        </h4>
+
+                    </div>
+
+                </div>
+
+
+                {% if property.property_type %}
+
+                <div class="col-md-6">
+
+                    <div class="p-3 bg-light rounded mb-3">
+
+                        <small class="text-muted">
+                            Property Type
+                        </small>
+
+                        <h5>
+                            🏷️ {{ property.property_type }}
+                        </h5>
+
+                    </div>
+
+                </div>
+
+                {% endif %}
+
+
+                <div class="col-md-6">
+
+                    <div class="p-3 bg-light rounded mb-3">
+
+                        <small class="text-muted">
+                            Location
+                        </small>
+
+                        <h5>
+                            📍 {{ property.address }}
+                        </h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <h4 class="section-title">
+                📝 Description
+            </h4>
+
+            <p class="fs-5 text-secondary">
+                {{ property.description }}
+            </p>
+
+        </div>
+
+
+        <!-- Google Map -->
+
+        {% if property.address %}
+
+        <div class="card detail-card p-4 mt-4">
+
+            <h3 class="section-title mb-3">
+                📍 Property Location
+            </h3>
+
+            <iframe
+                width="100%"
+                height="350"
+                style="border:0; border-radius:15px;"
+                loading="lazy"
+                allowfullscreen
+                src="https://www.google.com/maps?q={{ property.address|urlencode }}&output=embed">
+            </iframe>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- Agent Card -->
+
+    <div class="col-lg-4">
+
+        <div class="card detail-card p-4">
+
+            <h3 class="section-title mb-4">
+                👤 Listed By
+            </h3>
+
+            <div class="text-center mb-4">
+
+                <div class="rounded-circle bg-primary text-white
+                            d-flex align-items-center justify-content-center
+                            mx-auto mb-3"
+                     style="width:80px;height:80px;font-size:35px;">
+
+                    👤
+
+                </div>
+
+                <h4>
+                    {{ property.agent.username }}
+                </h4>
+
+                <p class="text-muted">
+                    Property Agent
+                </p>
+
+            </div>
+
+
+            <hr>
+
+
+            <p>
+                ✉️ <strong>Email</strong><br>
+                {{ property.agent.email }}
+            </p>
+
+
+            {% if property.agent.phone %}
+
+            <p>
+                📞 <strong>Phone</strong><br>
+                {{ property.agent.phone }}
+            </p>
+
+            {% endif %}
+
+
+            <a href="{% url 'property_inquiry' property.pk %}"
+               class="btn btn-success w-100 mt-3">
+
+                📩 Contact Agent
+
+            </a>
+
+        </div>
+
+
+        {% if user == property.agent %}
+
+        <div class="card detail-card p-4 mt-4">
+
+            <h5 class="section-title">
+                ⚙️ Manage Property
+            </h5>
+
+            <a href="{% url 'property_edit' property.pk %}"
+               class="btn btn-warning w-100 mt-2">
+
+                ✏️ Edit Property
+
+            </a>
+
+            <a href="{% url 'property_delete' property.pk %}"
+               class="btn btn-danger w-100 mt-2">
+
+                🗑️ Delete Property
+
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
 </div>
 
 {% endblock %}

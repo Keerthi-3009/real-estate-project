@@ -1,7 +1,5 @@
 from django import forms
-from .models import Property
-from .models import Inquiry
-
+from .models import Property, Inquiry, SellerSubmission, SellerSubmissionImage
 class PropertyForm(forms.ModelForm):
     class Meta:
         model = Property
@@ -15,3 +13,22 @@ class InquiryForm(forms.ModelForm):
     class Meta:
         model = Inquiry
         fields = ['name', 'email', 'phone', 'message']
+
+class SellerSubmissionForm(forms.ModelForm):
+    class Meta:
+        model = SellerSubmission
+        fields = [
+            'name',
+            'email',
+            'phone',
+            'property_title',
+            'description',
+            'address',
+            'price',
+        ]
+
+
+class SellerSubmissionImageForm(forms.ModelForm):
+    class Meta:
+        model = SellerSubmissionImage
+        fields = ['image']

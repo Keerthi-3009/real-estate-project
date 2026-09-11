@@ -1,9 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Property, PropertyImage, Inquiry
-from .filters import PropertyFilter
 from django.contrib.auth.decorators import login_required
-from .forms import PropertyForm, InquiryForm
 
+from .models import (
+    Property,
+    PropertyImage,
+    Inquiry,
+    SellerSubmissionImage
+)
+
+from .filters import PropertyFilter
+
+from .forms import (
+    PropertyForm,
+    InquiryForm,
+    SellerSubmissionForm
+)
 
 def property_list(request):
     property_filter = PropertyFilter(request.GET, queryset=Property.objects.all())
@@ -18,37 +29,77 @@ def property_detail(request, pk):
 def property_create(request):
     if request.method == 'POST':
         form = PropertyForm(request.POST)
+
         if form.is_valid():
             property = form.save(commit=False)
             property.agent = request.user
             property.save()
 
+            # Get all uploaded images
             images = request.FILES.getlist('images')
+
+            # Save each image
             for img in images:
-                PropertyImage.objects.create(property=property, image=img)
+                PropertyImage.objects.create(
+                    property=property,
+                    image=img
+                )
 
             return redirect('property_detail', pk=property.pk)
+
     else:
         form = PropertyForm()
-    return render(request, 'listings/property_form.html', {'form': form})
 
+    return render(
+        request,
+        'listings/property_form.html',
+        {'form': form}
+    )
+
+@login_required
 def property_edit(request, pk):
-    property = get_object_or_404(Property, pk=pk, agent=request.user)
+    property = get_object_or_404(
+        Property,
+        pk=pk,
+        agent=request.user
+    )
+
     if request.method == 'POST':
-        form = PropertyForm(request.POST, instance=property)
+        form = PropertyForm(
+            request.POST,
+            instance=property
+        )
+
         if form.is_valid():
             form.save()
 
+            # Get newly uploaded images
             images = request.FILES.getlist('images')
-            for img in images:
-                PropertyImage.objects.create(property=property, image=img)
 
-            return redirect('property_detail', pk=property.pk)
+            # Save each new image
+            for img in images:
+                PropertyImage.objects.create(
+                    property=property,
+                    image=img
+                )
+
+            return redirect(
+                'property_detail',
+                pk=property.pk
+            )
+
     else:
         form = PropertyForm(instance=property)
-    return render(request, 'listings/property_form.html', {'form': form, 'editing': True})
 
-
+    return render(
+        request,
+        'listings/property_form.html',
+        {
+            'form': form,
+            'editing': True,
+            'property': property
+        }
+    )
 @login_required
 def property_delete(request, pk):
     property = get_object_or_404(Property, pk=pk, agent=request.user)
@@ -57,20 +108,7 @@ def property_delete(request, pk):
         return redirect('property_list')
     return render(request, 'listings/property_confirm_delete.html', {'property': property})
 
-@login_required
-def property_edit(request, pk):
-    property = get_object_or_404(Property, pk=pk, agent=request.user)
-    if request.method == 'POST':
-        form = PropertyForm(request.POST, instance=property)
-        if form.is_valid():
-            form.save()
-            images = request.FILES.getlist('images')
-            for img in images:
-                PropertyImage.objects.create(property=property, image=img)
-            return redirect('property_detail', pk=property.pk)
-    else:
-        form = PropertyForm(instance=property)
-    return render(request, 'listings/property_form.html', {'form': form, 'editing': True})
+
 
 def property_inquiry(request, pk):
     property = get_object_or_404(Property, pk=pk)
@@ -84,3 +122,32 @@ def property_inquiry(request, pk):
     else:
         form = InquiryForm()
     return render(request, 'listings/property_inquiry.html', {'form': form, 'property': property})
+
+
+def sell_property(request):
+    if request.method == 'POST':
+        form = SellerSubmissionForm(request.POST)
+
+        if form.is_valid():
+            submission = form.save()
+
+            # Get all uploaded property images
+            images = request.FILES.getlist('property_images')
+
+            # Save each image
+            for image in images:
+                SellerSubmissionImage.objects.create(
+                    submission=submission,
+                    image=image
+                )
+
+            return redirect('property_list')
+
+    else:
+        form = SellerSubmissionForm()
+
+    return render(
+        request,
+        'listings/sell_property.html',
+        {'form': form}
+    )
