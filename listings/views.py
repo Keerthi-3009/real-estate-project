@@ -31,3 +31,43 @@ def property_create(request):
     else:
         form = PropertyForm()
     return render(request, 'listings/property_form.html', {'form': form})
+
+def property_edit(request, pk):
+    property = get_object_or_404(Property, pk=pk, agent=request.user)
+    if request.method == 'POST':
+        form = PropertyForm(request.POST, instance=property)
+        if form.is_valid():
+            form.save()
+
+            images = request.FILES.getlist('images')
+            for img in images:
+                PropertyImage.objects.create(property=property, image=img)
+
+            return redirect('property_detail', pk=property.pk)
+    else:
+        form = PropertyForm(instance=property)
+    return render(request, 'listings/property_form.html', {'form': form, 'editing': True})
+
+
+@login_required
+def property_delete(request, pk):
+    property = get_object_or_404(Property, pk=pk, agent=request.user)
+    if request.method == 'POST':
+        property.delete()
+        return redirect('property_list')
+    return render(request, 'listings/property_confirm_delete.html', {'property': property})
+
+@login_required
+def property_edit(request, pk):
+    property = get_object_or_404(Property, pk=pk, agent=request.user)
+    if request.method == 'POST':
+        form = PropertyForm(request.POST, instance=property)
+        if form.is_valid():
+            form.save()
+            images = request.FILES.getlist('images')
+            for img in images:
+                PropertyImage.objects.create(property=property, image=img)
+            return redirect('property_detail', pk=property.pk)
+    else:
+        form = PropertyForm(instance=property)
+    return render(request, 'listings/property_form.html', {'form': form, 'editing': True})
