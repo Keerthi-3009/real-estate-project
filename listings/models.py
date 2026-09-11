@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class PropertyType(models.Model):
@@ -20,9 +21,11 @@ class Property(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=12, decimal_places=2)
     location = models.CharField(max_length=200)
+    agent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='properties')
     property_type = models.ForeignKey(
         PropertyType,
         on_delete=models.CASCADE
+
     )
 
     def __str__(self):
