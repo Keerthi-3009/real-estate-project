@@ -1,158 +1,59 @@
 {% extends 'listings/base.html' %}
-
-{% block title %}Properties - Real Estate Portal{% endblock %}
-
+{% block title %}Available Properties{% endblock %}
 {% block content %}
 
 <div class="hero text-center">
-
-    <h1 class="display-5 fw-bold">
-        🏠 Find Your Dream Property
-    </h1>
-
-    <p class="lead mb-4">
-        Explore houses, villas, lands and properties listed by our agents.
-    </p>
-
+    <h1>🏠 Find Your Dream Property</h1>
+    <p class="mb-0">Explore houses, villas, lands and properties listed by our agents.</p>
 </div>
 
-
-<!-- Search / Filter -->
-
-<div class="card detail-card p-4 mb-5">
-
-    <h4 class="section-title mb-3">
-        🔎 Search Properties
-    </h4>
-
-    <form method="get">
-
-        <div class="row">
-
-            {% for field in filter.form %}
-
-                <div class="col-md-4 mb-3">
-                    {{ field.label_tag }}
-                    {{ field }}
-                </div>
-
-            {% endfor %}
-
+<div class="card p-4 mb-5" style="border-radius: 18px; border: none; box-shadow: 0 5px 20px rgba(0,0,0,0.06);">
+    <h4 class="section-title mb-3">🔍 Search Properties</h4>
+    <form method="get" class="row g-3">
+        <div class="col-md-4">
+            <label class="form-label">Title contains</label>
+            {{ filter.form.title }}
         </div>
-
-        <button type="submit" class="btn btn-main">
-            🔍 Search
-        </button>
-
-        <a href="{% url 'property_list' %}"
-           class="btn btn-outline-secondary">
-            Reset
-        </a>
-
+        <div class="col-md-3">
+            <label class="form-label">Min Price</label>
+            {{ filter.form.min_price }}
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Max Price</label>
+            {{ filter.form.max_price }}
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-main w-100">Search</button>
+        </div>
     </form>
-
 </div>
 
+<h4 class="section-title mb-4">🏡 Available Properties</h4>
 
-<h2 class="section-title mb-4">
-    🏡 Available Properties
-</h2>
-
-
-<div class="row g-4">
-
+<div class="row">
     {% for property in filter.qs %}
-
-        <div class="col-lg-4 col-md-6">
-
-            <div class="property-card">
-
-                <!-- Property Image -->
-
-                {% with property.images.first as first_image %}
-
-                    {% if first_image %}
-
-                        <img src="{{ first_image.image.url }}"
-                             class="w-100"
-                             alt="{{ property.title }}">
-
-                    {% else %}
-
-                        <div class="d-flex align-items-center justify-content-center bg-light"
-                             style="height:230px;">
-
-                            <span class="text-muted">
-                                🏠 No Image Available
-                            </span>
-
-                        </div>
-
-                    {% endif %}
-
-                {% endwith %}
-
-
-                <div class="card-body p-4">
-
-                    <h4 class="property-title">
-                        {{ property.title }}
-                    </h4>
-
-                    <p class="text-muted mb-2">
-                        📍 {{ property.address }}
-                    </p>
-
-                    <p class="price mb-3">
-                        ₹{{ property.price }}
-                    </p>
-
-                    <p class="text-secondary">
-
-                        {{ property.description|truncatewords:20 }}
-
-                    </p>
-
-
-                    <div class="d-flex justify-content-between align-items-center">
-
-                        <a href="{% url 'property_detail' property.pk %}"
-                           class="btn btn-main">
-
-                            View Details →
-
-                        </a>
-
-                        <span class="badge bg-primary">
-                            {{ property.images.count }} 📷
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    {% empty %}
-
-        <div class="col-12">
-
-            <div class="alert alert-info text-center p-5">
-
-                <h4>🏠 No properties found</h4>
-
-                <p>
-                    There are currently no properties matching your search.
+    <div class="col-md-4 mb-4">
+        <div class="property-card">
+            {% if property.images.first %}
+                <img src="{{ property.images.first.image.url }}" alt="{{ property.title }}">
+            {% else %}
+                <img src="https://via.placeholder.com/400x230?text=No+Image" alt="No image">
+            {% endif %}
+            <div class="p-3">
+                <h5 class="property-title">{{ property.title }}</h5>
+                <p class="price mb-2">₹{{ property.price }}</p>
+                <p class="text-muted mb-3" style="font-size: 0.9rem;">
+                    {{ property.description|truncatewords:12 }}
                 </p>
-
+                <a href="{% url 'property_detail' property.pk %}" class="btn btn-main w-100">View Details</a>
             </div>
-
         </div>
-
+    </div>
+    {% empty %}
+    <div class="col-12 text-center py-5">
+        <h5 class="text-muted">No properties found. Check back soon!</h5>
+    </div>
     {% endfor %}
-
 </div>
 
 {% endblock %}
