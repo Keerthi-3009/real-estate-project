@@ -30,7 +30,6 @@ class Property(models.Model):
     property_type = models.ForeignKey(
         PropertyType,
         on_delete=models.CASCADE
-
     )
 
     def __str__(self):
@@ -38,8 +37,6 @@ class Property(models.Model):
 
     class Meta:
         verbose_name_plural = "Properties"
-
-
 
 
 class PropertyImage(models.Model):
@@ -72,6 +69,7 @@ class Favorite(models.Model):
     def __str__(self):
         return f"{self.user} - {self.property.title}"
 
+
 class SellerSubmission(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -97,3 +95,20 @@ class SellerSubmissionImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.submission.property_title}"
+
+
+class BuyerInquiry(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    looking_for = models.CharField(max_length=200, help_text="e.g. 3BHK villa, land, etc.")
+    budget = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True)
+    preferred_location = models.CharField(max_length=200, blank=True)
+    message = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - looking for {self.looking_for}"
+
+    class Meta:
+        verbose_name_plural = "Buyer Inquiries"

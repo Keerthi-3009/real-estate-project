@@ -9,6 +9,8 @@ from .models import (
     SellerSubmission,
     SellerSubmissionImage,
 )
+from .models import BuyerInquiry
+
 
 admin.site.register(Property)
 admin.site.register(PropertyType)
@@ -18,3 +20,4 @@ admin.site.register(Inquiry)
 admin.site.register(Favorite)
 admin.site.register(SellerSubmission)
 admin.site.register(SellerSubmissionImage)
+admin.site.register(BuyerInquiry)

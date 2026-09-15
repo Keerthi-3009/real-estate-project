@@ -9,4 +9,5 @@ urlpatterns = [
     path('property/<int:pk>/delete/', views.property_delete, name='property_delete'),
     path('property/<int:pk>/inquire/', views.property_inquiry, name='property_inquiry'),
     path('sell/', views.sell_property, name='sell_property'),
+    path('buyer-signup/', views.buyer_signup, name='buyer_signup'),
 ]

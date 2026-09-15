@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from .forms import BuyerInquiryForm
 
 from .models import (
     Property,
@@ -16,6 +17,9 @@ from .forms import (
     SellerSubmissionForm
 )
 
+def is_agent(user):
+    return user.is_authenticated and user.role == 'agent'
+
 def property_list(request):
     property_filter = PropertyFilter(request.GET, queryset=Property.objects.all())
     return render(request, 'listings/property_list.html', {'filter': property_filter})
@@ -25,7 +29,9 @@ def property_detail(request, pk):
     return render(request, 'listings/property_detail.html', {'property': property})
 
 
-@login_required
+
+
+@user_passes_test(is_agent)
 def property_create(request):
     if request.method == 'POST':
         form = PropertyForm(request.POST)
@@ -35,10 +41,8 @@ def property_create(request):
             property.agent = request.user
             property.save()
 
-            # Get all uploaded images
             images = request.FILES.getlist('images')
 
-            # Save each image
             for img in images:
                 PropertyImage.objects.create(
                     property=property,
@@ -151,3 +155,18 @@ def sell_property(request):
         'listings/sell_property.html',
         {'form': form}
     )
+
+def is_agent(user):
+    return user.is_authenticated and user.role == 'agent'
+
+
+
+def buyer_signup(request):
+    if request.method == 'POST':
+        form = BuyerInquiryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('property_list')
+    else:
+        form = BuyerInquiryForm()
+    return render(request, 'listings/buyer_signup.html', {'form': form})
