@@ -33,26 +33,27 @@
 <div class="row">
     {% for property in filter.qs %}
     <div class="col-md-4 mb-4">
-        <div class="property-card">
+    <div class="property-card">
+        <div class="card-img-wrapper">
+            <span class="property-badge">{{ property.property_type }}</span>
             {% if property.images.first %}
                 <img src="{{ property.images.first.image.url }}" alt="{{ property.title }}">
             {% else %}
                 <img src="https://via.placeholder.com/400x230?text=No+Image" alt="No image">
             {% endif %}
-            <div class="p-3">
-                <h5 class="property-title">{{ property.title }}</h5>
-                <p class="price mb-2">₹{{ property.price }}</p>
-                <p class="text-muted mb-3" style="font-size: 0.9rem;">
-                    {{ property.description|truncatewords:12 }}
-                </p>
-                <a href="{% url 'property_detail' property.pk %}" class="btn btn-main w-100">View Details</a>
-            </div>
+        </div>
+        <div class="p-3">
+            <h5 class="property-title">{{ property.title }}</h5>
+            <p class="property-location">📍 {{ property.location }}</p>
+            <p class="price mb-2">₹{{ property.price }}</p>
+            <div class="divider-line"></div>
+            <p class="text-muted mb-3" style="font-size: 0.9rem;">
+                {{ property.description|truncatewords:12 }}
+            </p>
+            <a href="{% url 'property_detail' property.pk %}" class="btn btn-main w-100">View Details</a>
         </div>
     </div>
-    {% empty %}
-    <div class="col-12 text-center py-5">
-        <h5 class="text-muted">No properties found. Check back soon!</h5>
-    </div>
+</div>
     {% endfor %}
 </div>
 
