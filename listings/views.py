@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import BuyerInquiryForm
 from django.contrib import messages
+from .models import SellerSubmission, SellerSubmissionImage
 
 from .models import (
     Property,
@@ -120,11 +121,18 @@ def property_inquiry(request, pk):
     return render(request, 'listings/property_inquiry.html', {'form': form, 'property': property})
 
 
+
+
 def sell_property(request):
     if request.method == 'POST':
         form = SellerSubmissionForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            submission = form.save()
+
+            images = request.FILES.getlist('images')
+            for img in images:
+                SellerSubmissionImage.objects.create(submission=submission, image=img)
+
             messages.success(request, "Your property details were submitted successfully! An agent will contact you soon.")
             return redirect('property_list')
     else:
