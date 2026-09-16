@@ -55,6 +55,11 @@ class Inquiry(models.Model):
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        if self.property:
+            return f"{self.name} - inquiry about {self.property.title}"
+        return f"{self.name} - general inquiry"
+
     class Meta:
         verbose_name_plural = "Inquiries"
 
