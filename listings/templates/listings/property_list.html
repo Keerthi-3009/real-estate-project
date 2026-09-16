@@ -18,13 +18,18 @@
             <label class="form-label">Min Price</label>
             {{ filter.form.min_price }}
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label class="form-label">Max Price</label>
             {{ filter.form.max_price }}
         </div>
-        <div class="col-md-2 d-flex align-items-end">
-            <button type="submit" class="btn-colorful w-100">Search</button>
-        </div>
+        <div class="col-md-3 d-flex align-items-end gap-2">
+    <button type="submit" class="btn-colorful w-100" style="border: none; cursor: pointer;">
+        <i class="bi bi-search"></i> Search
+    </button>
+    <a href="{% url 'property_list' %}" class="btn-gold w-100 text-center">
+        <i class="bi bi-x-circle"></i> Clear
+    </a>
+</div>
     </form>
 </div>
 
