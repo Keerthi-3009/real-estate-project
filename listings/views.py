@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import BuyerInquiryForm
+from django.contrib import messages
 
 from .models import (
     Property,
@@ -31,35 +32,26 @@ def property_detail(request, pk):
 
 
 
-@user_passes_test(is_agent)
+@login_required
 def property_create(request):
+    if request.user.role != 'agent':
+        return redirect('property_list')
     if request.method == 'POST':
         form = PropertyForm(request.POST)
-
         if form.is_valid():
             property = form.save(commit=False)
             property.agent = request.user
             property.save()
 
             images = request.FILES.getlist('images')
-
             for img in images:
-                PropertyImage.objects.create(
-                    property=property,
-                    image=img
-                )
+                PropertyImage.objects.create(property=property, image=img)
 
+            messages.success(request, "Property added successfully!")
             return redirect('property_detail', pk=property.pk)
-
     else:
         form = PropertyForm()
-
-    return render(
-        request,
-        'listings/property_form.html',
-        {'form': form}
-    )
-
+    return render(request, 'listings/property_form.html', {'form': form})
 @login_required
 def property_edit(request, pk):
     property = get_object_or_404(
@@ -130,31 +122,14 @@ def property_inquiry(request, pk):
 
 def sell_property(request):
     if request.method == 'POST':
-        form = SellerSubmissionForm(request.POST)
-
+        form = SellerSubmissionForm(request.POST, request.FILES)
         if form.is_valid():
-            submission = form.save()
-
-            # Get all uploaded property images
-            images = request.FILES.getlist('property_images')
-
-            # Save each image
-            for image in images:
-                SellerSubmissionImage.objects.create(
-                    submission=submission,
-                    image=image
-                )
-
+            form.save()
+            messages.success(request, "Your property details were submitted successfully! An agent will contact you soon.")
             return redirect('property_list')
-
     else:
         form = SellerSubmissionForm()
-
-    return render(
-        request,
-        'listings/sell_property.html',
-        {'form': form}
-    )
+    return render(request, 'listings/sell_property.html', {'form': form})
 
 def is_agent(user):
     return user.is_authenticated and user.role == 'agent'
@@ -166,6 +141,7 @@ def buyer_signup(request):
         form = BuyerInquiryForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Thanks! Your requirements were submitted successfully. An agent will reach out to you soon.")
             return redirect('property_list')
     else:
         form = BuyerInquiryForm()
