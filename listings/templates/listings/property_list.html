@@ -2,12 +2,12 @@
 {% block title %}Available Properties{% endblock %}
 {% block content %}
 
-<div class="hero text-center">
-    <h1>🏠 Find Your Dream Property</h1>
-    <p class="mb-0">Explore houses, villas, lands and properties listed by our agents.</p>
+<div class="hero-colorful">
+    <h1>🏠 Find Your Dream <span>Property</span></h1>
+    <p>Explore houses, villas, lands and properties listed by our agents.</p>
 </div>
 
-<div class="card p-4 mb-5" style="border-radius: 18px; border: none; box-shadow: 0 5px 20px rgba(0,0,0,0.06);">
+<div class="search-card">
     <h4 class="section-title mb-3">🔍 Search Properties</h4>
     <form method="get" class="row g-3">
         <div class="col-md-4">
@@ -23,7 +23,7 @@
             {{ filter.form.max_price }}
         </div>
         <div class="col-md-2 d-flex align-items-end">
-            <button type="submit" class="btn btn-main w-100">Search</button>
+            <button type="submit" class="btn-colorful w-100">Search</button>
         </div>
     </form>
 </div>
@@ -33,27 +33,30 @@
 <div class="row">
     {% for property in filter.qs %}
     <div class="col-md-4 mb-4">
-    <div class="property-card">
-        <div class="card-img-wrapper">
-            <span class="property-badge">{{ property.property_type }}</span>
-            {% if property.images.first %}
-                <img src="{{ property.images.first.image.url }}" alt="{{ property.title }}">
-            {% else %}
-                <img src="https://via.placeholder.com/400x230?text=No+Image" alt="No image">
-            {% endif %}
-        </div>
-        <div class="p-3">
-            <h5 class="property-title">{{ property.title }}</h5>
-            <p class="property-location">📍 {{ property.location }}</p>
-            <p class="price mb-2">₹{{ property.price }}</p>
-            <div class="divider-line"></div>
-            <p class="text-muted mb-3" style="font-size: 0.9rem;">
-                {{ property.description|truncatewords:12 }}
-            </p>
-            <a href="{% url 'property_detail' property.pk %}" class="btn btn-main w-100">View Details</a>
+        <div class="property-card">
+            <div class="card-img-wrapper">
+                <span class="property-badge">{{ property.property_type }}</span>
+                {% if property.images.first %}
+                    <img src="{{ property.images.first.image.url }}" alt="{{ property.title }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/400x230?text=No+Image" alt="No image">
+                {% endif %}
+            </div>
+            <div class="property-card-body">
+                <h5 class="property-title">{{ property.title }}</h5>
+                <p class="property-location"><i class="bi bi-geo-alt-fill"></i> {{ property.location }}</p>
+                <p class="price mb-2">₹{{ property.price }}</p>
+                <p class="text-muted mb-3" style="font-size: 0.9rem;">
+                    {{ property.description|truncatewords:12 }}
+                </p>
+                <a href="{% url 'property_detail' property.pk %}" class="btn-colorful w-100">View Details</a>
+            </div>
         </div>
     </div>
-</div>
+    {% empty %}
+    <div class="col-12 text-center py-5">
+        <h5 class="text-muted">No properties found. Check back soon!</h5>
+    </div>
     {% endfor %}
 </div>
 
