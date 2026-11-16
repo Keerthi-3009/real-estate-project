@@ -3,7 +3,7 @@
 A full-stack real estate property listing platform built with Django, MySQL/PostgreSQL, and Bootstrap. Agents list properties with images and location maps, while buyers and sellers connect with agents directly.
 
 🔗 **GitHub:** https://github.com/Keerthi-3009/real-estate-project
-🌐 **Live Demo:** https://real-estate-project.onrender.com
+🌐 **Live Demo:** https://real-estate-project-ba6b.onrender.com
 
 > Hosted on Render's free plan, so the first load may take up to a minute to wake up.
 
