@@ -1,9 +1,11 @@
 # 🏠 RealEstate Portal
 
-A full-stack real estate property listing platform built with Django, MySQL, and Bootstrap. Agents list properties with images and location maps, while buyers and sellers connect with agents directly.
+A full-stack real estate property listing platform built with Django, MySQL/PostgreSQL, and Bootstrap. Agents list properties with images and location maps, while buyers and sellers connect with agents directly.
 
 🔗 **GitHub:** https://github.com/Keerthi-3009/real-estate-project
-🌐 **Live Demo:** https://krithika07.pythonanywhere.com/
+🌐 **Live Demo:** https://real-estate-project.onrender.com
+
+> Hosted on Render's free plan, so the first load may take up to a minute to wake up.
 
 ## Features
 
@@ -21,10 +23,11 @@ A full-stack real estate property listing platform built with Django, MySQL, and
 ## Tech Stack
 
 - **Backend:** Python, Django
-- **Database:** MySQL
+- **Database:** MySQL (local development), PostgreSQL (production)
 - **Frontend:** HTML, Bootstrap 5, Custom CSS, Bootstrap Icons
 - **Image Handling:** Pillow
 - **Filtering:** django-filter
+- **Deployment:** Render, Gunicorn, WhiteNoise
 
 ## Screenshots
 
@@ -62,7 +65,7 @@ venv\Scripts\activate
 
 3. Install dependencies
 ```bash
-pip install django mysqlclient pillow django-filter
+pip install -r requirements.txt
 ```
 
 4. Set up the MySQL database
@@ -87,3 +90,12 @@ python manage.py runserver
 ```
 
 Visit `http://127.0.0.1:8000/` for the site, `http://127.0.0.1:8000/admin/` for the admin dashboard.
+
+## Deployment
+
+Deployed on [Render](https://render.com) with a PostgreSQL database.
+
+- The app reads `SECRET_KEY`, `DEBUG` and `DATABASE_URL` from environment variables.
+- Build command: `./build.sh`
+- Start command: `gunicorn config.wsgi:application`
+- Locally the project uses MySQL; on Render it switches to PostgreSQL automatically when `DATABASE_URL` is set.
