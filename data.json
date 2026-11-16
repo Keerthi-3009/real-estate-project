@@ -1,0 +1,864 @@
+[
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "Krithika",
+    "permissions": []
+  }
+},
+{
+  "model": "listings.propertytype",
+  "pk": 2,
+  "fields": {
+    "name": "Residential Land"
+  }
+},
+{
+  "model": "listings.propertytype",
+  "pk": 3,
+  "fields": {
+    "name": "Commercial Land"
+  }
+},
+{
+  "model": "listings.propertytype",
+  "pk": 4,
+  "fields": {
+    "name": "Agricultural Land"
+  }
+},
+{
+  "model": "listings.propertytype",
+  "pk": 5,
+  "fields": {
+    "name": "Industrial Land"
+  }
+},
+{
+  "model": "listings.propertytype",
+  "pk": 6,
+  "fields": {
+    "name": "Mixed-Use Land"
+  }
+},
+{
+  "model": "listings.amenity",
+  "pk": 1,
+  "fields": {
+    "name": "Parking"
+  }
+},
+{
+  "model": "listings.amenity",
+  "pk": 2,
+  "fields": {
+    "name": "Lift / Elevator"
+  }
+},
+{
+  "model": "listings.amenity",
+  "pk": 3,
+  "fields": {
+    "name": "Water Supply"
+  }
+},
+{
+  "model": "listings.amenity",
+  "pk": 4,
+  "fields": {
+    "name": "Children’s Playground"
+  }
+},
+{
+  "model": "listings.amenity",
+  "pk": 5,
+  "fields": {
+    "name": "Security"
+  }
+},
+{
+  "model": "listings.amenity",
+  "pk": 6,
+  "fields": {
+    "name": "Power Backup"
+  }
+},
+{
+  "model": "listings.amenity",
+  "pk": 7,
+  "fields": {
+    "name": "Gym"
+  }
+},
+{
+  "model": "listings.amenity",
+  "pk": 8,
+  "fields": {
+    "name": "Garden"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 31,
+  "fields": {
+    "property": 15,
+    "image": "property_images/Vila_Photo_ijlmhQO.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 32,
+  "fields": {
+    "property": 15,
+    "image": "property_images/image_1.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 33,
+  "fields": {
+    "property": 15,
+    "image": "property_images/image_3.webp"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 34,
+  "fields": {
+    "property": 15,
+    "image": "property_images/image2.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 35,
+  "fields": {
+    "property": 15,
+    "image": "property_images/image3.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 36,
+  "fields": {
+    "property": 15,
+    "image": "property_images/image4.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 37,
+  "fields": {
+    "property": 16,
+    "image": "property_images/img1.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 38,
+  "fields": {
+    "property": 16,
+    "image": "property_images/img2.avif"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 39,
+  "fields": {
+    "property": 16,
+    "image": "property_images/img3.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 40,
+  "fields": {
+    "property": 16,
+    "image": "property_images/img4.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 41,
+  "fields": {
+    "property": 16,
+    "image": "property_images/img5.webp"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 42,
+  "fields": {
+    "property": 16,
+    "image": "property_images/img6.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 43,
+  "fields": {
+    "property": 17,
+    "image": "property_images/land_3.webp"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 44,
+  "fields": {
+    "property": 17,
+    "image": "property_images/land1.avif"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 45,
+  "fields": {
+    "property": 17,
+    "image": "property_images/land2.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 46,
+  "fields": {
+    "property": 18,
+    "image": "property_images/im1.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 47,
+  "fields": {
+    "property": 18,
+    "image": "property_images/im2.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 48,
+  "fields": {
+    "property": 18,
+    "image": "property_images/im3.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 49,
+  "fields": {
+    "property": 18,
+    "image": "property_images/im4.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 50,
+  "fields": {
+    "property": 18,
+    "image": "property_images/im5.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 51,
+  "fields": {
+    "property": 18,
+    "image": "property_images/im6.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 52,
+  "fields": {
+    "property": 19,
+    "image": "property_images/l1.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 53,
+  "fields": {
+    "property": 19,
+    "image": "property_images/l2.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 54,
+  "fields": {
+    "property": 20,
+    "image": "property_images/v1.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 55,
+  "fields": {
+    "property": 20,
+    "image": "property_images/v2.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 56,
+  "fields": {
+    "property": 20,
+    "image": "property_images/v3.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 57,
+  "fields": {
+    "property": 20,
+    "image": "property_images/v4.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 58,
+  "fields": {
+    "property": 20,
+    "image": "property_images/v5.jpg"
+  }
+},
+{
+  "model": "listings.propertyimage",
+  "pk": 59,
+  "fields": {
+    "property": 20,
+    "image": "property_images/v6.jpg"
+  }
+},
+{
+  "model": "listings.inquiry",
+  "pk": 3,
+  "fields": {
+    "property": 17,
+    "name": "kavitha",
+    "email": "kavitha94@gmail.com",
+    "phone": "9632587414",
+    "message": "I want this land",
+    "created_at": "2026-09-16T06:44:46.741Z"
+  }
+},
+{
+  "model": "listings.sellersubmission",
+  "pk": 1,
+  "fields": {
+    "name": "Ragul",
+    "email": "ragul087@gmail.com",
+    "phone": "8561234758",
+    "property_title": "Traditional House for Sale",
+    "description": "Beautiful traditional house for sale in a peaceful and convenient location. This charming home features a classic design, spacious rooms, good ventilation, and a warm traditional atmosphere. The property is ideal for families looking for a comfortable home with timeless character.\r\n\r\nHighlights:\r\n\r\nSpacious and well-maintained house\r\nTraditional architectural style\r\nGood ventilation and natural light\r\nPeaceful residential location\r\nSuitable for family living\r\nConvenient access to nearby schools, shops, and other facilities",
+    "address": "Kovaipudur, Tamil Nadu",
+    "price": "4600000.00",
+    "created_at": "2026-09-15T09:24:35.053Z",
+    "reviewed": false
+  }
+},
+{
+  "model": "listings.sellersubmission",
+  "pk": 2,
+  "fields": {
+    "name": "Meena",
+    "email": "meena45@gmail.com",
+    "phone": "9631478523",
+    "property_title": "House for sale",
+    "description": "I’m interested in the house for sale.",
+    "address": "perur, coimbatore",
+    "price": "4499999.99",
+    "created_at": "2026-09-16T07:09:41.734Z",
+    "reviewed": false
+  }
+},
+{
+  "model": "listings.sellersubmission",
+  "pk": 3,
+  "fields": {
+    "name": "shanvika",
+    "email": "shanvika96@gmail.com",
+    "phone": "9635287412",
+    "property_title": "land",
+    "description": "land for sale",
+    "address": "kalampalayam",
+    "price": "6600000.00",
+    "created_at": "2026-09-16T08:58:06.161Z",
+    "reviewed": false
+  }
+},
+{
+  "model": "listings.sellersubmissionimage",
+  "pk": 1,
+  "fields": {
+    "submission": 1,
+    "image": "seller_submissions/v1.jpg"
+  }
+},
+{
+  "model": "listings.sellersubmissionimage",
+  "pk": 2,
+  "fields": {
+    "submission": 2,
+    "image": "seller_submissions/im1.jpg"
+  }
+},
+{
+  "model": "listings.sellersubmissionimage",
+  "pk": 3,
+  "fields": {
+    "submission": 3,
+    "image": "seller_submissions/land_3.webp"
+  }
+},
+{
+  "model": "listings.buyerinquiry",
+  "pk": 1,
+  "fields": {
+    "name": "Raveena",
+    "email": "raveena234@gmail.com",
+    "phone": "9856102364",
+    "looking_for": "land",
+    "budget": "5000000.00",
+    "preferred_location": "Karunya",
+    "message": "i want land",
+    "created_at": "2026-09-15T09:13:30.489Z"
+  }
+},
+{
+  "model": "listings.buyerinquiry",
+  "pk": 2,
+  "fields": {
+    "name": "vimal",
+    "email": "vimal89@gmail.com",
+    "phone": "9632587412",
+    "looking_for": "land and house",
+    "budget": "7000000.00",
+    "preferred_location": "any",
+    "message": "I want any location",
+    "created_at": "2026-09-16T05:47:39.976Z"
+  }
+},
+{
+  "model": "listings.buyerinquiry",
+  "pk": 3,
+  "fields": {
+    "name": "Tharani",
+    "email": "tharani89@gmail.com",
+    "phone": "8695231474",
+    "looking_for": "house and villa",
+    "budget": "8500000.00",
+    "preferred_location": "any",
+    "message": "let me a good property to me",
+    "created_at": "2026-09-16T07:12:08.701Z"
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$vcJITUMlTZsirp2wYBpn8X$gauujm98qvbIhehzqOvEBv/ybWKW8cGsZ3IOS/lXp+U=",
+    "last_login": "2026-09-18T08:49:45.339Z",
+    "is_superuser": true,
+    "username": "krithika",
+    "first_name": "Krithika",
+    "last_name": "Vimal",
+    "email": "krithikavimal22@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-09-10T05:38:18Z",
+    "role": "agent",
+    "phone": "9786946560",
+    "groups": [],
+    "user_permissions": [
+      [
+        "add_user",
+        "accounts",
+        "user"
+      ],
+      [
+        "change_user",
+        "accounts",
+        "user"
+      ],
+      [
+        "delete_user",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_user",
+        "accounts",
+        "user"
+      ],
+      [
+        "add_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "change_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "delete_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "view_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "add_group",
+        "auth",
+        "group"
+      ],
+      [
+        "change_group",
+        "auth",
+        "group"
+      ],
+      [
+        "delete_group",
+        "auth",
+        "group"
+      ],
+      [
+        "view_group",
+        "auth",
+        "group"
+      ],
+      [
+        "add_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "change_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "delete_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "view_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "add_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "change_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "delete_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "view_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "add_amenity",
+        "listings",
+        "amenity"
+      ],
+      [
+        "change_amenity",
+        "listings",
+        "amenity"
+      ],
+      [
+        "delete_amenity",
+        "listings",
+        "amenity"
+      ],
+      [
+        "view_amenity",
+        "listings",
+        "amenity"
+      ],
+      [
+        "add_favorite",
+        "listings",
+        "favorite"
+      ],
+      [
+        "change_favorite",
+        "listings",
+        "favorite"
+      ],
+      [
+        "delete_favorite",
+        "listings",
+        "favorite"
+      ],
+      [
+        "view_favorite",
+        "listings",
+        "favorite"
+      ],
+      [
+        "add_inquiry",
+        "listings",
+        "inquiry"
+      ],
+      [
+        "change_inquiry",
+        "listings",
+        "inquiry"
+      ],
+      [
+        "delete_inquiry",
+        "listings",
+        "inquiry"
+      ],
+      [
+        "view_inquiry",
+        "listings",
+        "inquiry"
+      ],
+      [
+        "add_property",
+        "listings",
+        "property"
+      ],
+      [
+        "change_property",
+        "listings",
+        "property"
+      ],
+      [
+        "delete_property",
+        "listings",
+        "property"
+      ],
+      [
+        "view_property",
+        "listings",
+        "property"
+      ],
+      [
+        "add_propertyimage",
+        "listings",
+        "propertyimage"
+      ],
+      [
+        "change_propertyimage",
+        "listings",
+        "propertyimage"
+      ],
+      [
+        "delete_propertyimage",
+        "listings",
+        "propertyimage"
+      ],
+      [
+        "view_propertyimage",
+        "listings",
+        "propertyimage"
+      ],
+      [
+        "add_propertytype",
+        "listings",
+        "propertytype"
+      ],
+      [
+        "change_propertytype",
+        "listings",
+        "propertytype"
+      ],
+      [
+        "delete_propertytype",
+        "listings",
+        "propertytype"
+      ],
+      [
+        "view_propertytype",
+        "listings",
+        "propertytype"
+      ],
+      [
+        "add_sellersubmission",
+        "listings",
+        "sellersubmission"
+      ],
+      [
+        "change_sellersubmission",
+        "listings",
+        "sellersubmission"
+      ],
+      [
+        "delete_sellersubmission",
+        "listings",
+        "sellersubmission"
+      ],
+      [
+        "view_sellersubmission",
+        "listings",
+        "sellersubmission"
+      ],
+      [
+        "add_sellersubmissionimage",
+        "listings",
+        "sellersubmissionimage"
+      ],
+      [
+        "change_sellersubmissionimage",
+        "listings",
+        "sellersubmissionimage"
+      ],
+      [
+        "delete_sellersubmissionimage",
+        "listings",
+        "sellersubmissionimage"
+      ],
+      [
+        "view_sellersubmissionimage",
+        "listings",
+        "sellersubmissionimage"
+      ],
+      [
+        "add_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "change_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "delete_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "view_session",
+        "sessions",
+        "session"
+      ]
+    ]
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$2kWTtekXchJSH9917IxeGu$dUmCTgw2fwNCHJ6SxKWtO+f5cMjrZDa0aQ1qYk10SFY=",
+    "last_login": "2026-09-15T12:57:56.202Z",
+    "is_superuser": false,
+    "username": "Adhvi",
+    "first_name": "",
+    "last_name": "",
+    "email": "adhvi09@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-11T16:41:35.449Z",
+    "role": "buyer",
+    "phone": "8594621356",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "listings.property",
+  "pk": 15,
+  "fields": {
+    "title": "Beautiful Villa for Sale",
+    "description": "Spacious and beautifully designed villa available for sale in a peaceful and desirable location. This well-maintained property offers comfortable living spaces, modern interiors, spacious bedrooms, a well-equipped kitchen, and ample parking space.\r\n\r\nProperty Highlights:\r\n\r\nSpacious bedrooms and bathrooms\r\nModern kitchen\r\nBright and well-ventilated rooms\r\nPeaceful residential location\r\nAmple parking space\r\nExcellent connectivity to schools, hospitals, shops, and main roads",
+    "price": "8500000.00",
+    "location": "",
+    "address": "Central Ooty, Fern Hill, and Thalayathimund",
+    "agent": [
+      "krithika"
+    ],
+    "property_type": 2
+  }
+},
+{
+  "model": "listings.property",
+  "pk": 16,
+  "fields": {
+    "title": "Beautiful House for Sale",
+    "description": "A well-maintained and spacious house is available for sale in a peaceful and convenient location. The property offers comfortable living spaces, well-designed bedrooms, modern bathrooms, a spacious kitchen, and good ventilation throughout the house.\r\n\r\nThe house is ideal for families looking for a comfortable and peaceful home. It is conveniently located close to schools, hospitals, shops, restaurants, and other essential facilities.\r\n\r\nProperty Highlights:\r\n\r\nSpacious bedrooms\r\nModern kitchen\r\nWell-maintained bathrooms\r\nGood ventilation and natural light\r\nPeaceful residential location\r\nConvenient access to nearby facilities\r\nSuitable for families\r\nReady to move in\r\n\r\nContact us today for more details or to schedule a property visit.",
+    "price": "6800000.00",
+    "location": "",
+    "address": "Mahalingapuram, Tamil Nadu, India, 642002",
+    "agent": [
+      "krithika"
+    ],
+    "property_type": 2
+  }
+},
+{
+  "model": "listings.property",
+  "pk": 17,
+  "fields": {
+    "title": "Land for Sale",
+    "description": "Prime land available for sale in a desirable and peaceful location. This property is ideal for building your dream home, villa, or for investment purposes. The land offers good road access, a convenient location, and is close to essential facilities such as schools, hospitals, shops, and public transportation.\r\n\r\nA great opportunity for buyers looking for a valuable property in a developing area. Contact us today for more details and to schedule a site visit.",
+    "price": "3500000.00",
+    "location": "",
+    "address": "land near karunya university, coimbatore",
+    "agent": [
+      "krithika"
+    ],
+    "property_type": 3
+  }
+},
+{
+  "model": "listings.property",
+  "pk": 18,
+  "fields": {
+    "title": "Beautiful House for Sale",
+    "description": "A well-maintained and spacious house is available for sale in a peaceful and convenient location. The property offers comfortable rooms, a modern kitchen, good ventilation, and plenty of natural light. Ideal for families looking for a comfortable and peaceful home.\r\n\r\n✨ Features:\r\n\r\nSpacious bedrooms\r\nModern kitchen\r\nWell-maintained interiors\r\nGood ventilation and natural light\r\nPeaceful neighborhood\r\nConvenient access to schools, shops, and transportation\r\nSuitable for family living\r\n\r\n📍 Location: Prime and peaceful area\r\n💰 Price: Available on request\r\n\r\n📞 Contact us for more details and to schedule a visit.",
+    "price": "8500000.00",
+    "location": "",
+    "address": "Rs Puram, coimbatore",
+    "agent": [
+      "krithika"
+    ],
+    "property_type": 2
+  }
+},
+{
+  "model": "listings.property",
+  "pk": 19,
+  "fields": {
+    "title": "Prime Land for Sale",
+    "description": "A valuable plot of land is available for sale in a peaceful and developing location. The property is ideal for building a home, villa, or for future investment. Easy access to roads and nearby essential facilities makes this a convenient choice.\r\n\r\n✨ Features:\r\n\r\nPeaceful and developing area\r\nGood road access\r\nSuitable for residential construction\r\nClose to schools, shops, and other facilities\r\nExcellent investment opportunity\r\nClear and convenient location",
+    "price": "4500000.00",
+    "location": "",
+    "address": "Madhampetti, coimbatore",
+    "agent": [
+      "krithika"
+    ],
+    "property_type": 3
+  }
+},
+{
+  "model": "listings.property",
+  "pk": 20,
+  "fields": {
+    "title": "Beautiful Villa for Sale",
+    "description": "Discover a spacious and elegant villa in a peaceful and desirable location. This well-designed home offers comfortable living spaces, modern interiors, good ventilation, and plenty of natural light. Perfect for families looking for a stylish and comfortable home.\r\n\r\n✨ Features:\r\n\r\nSpacious bedrooms\r\nModern kitchen\r\nBright and well-ventilated rooms\r\nElegant interiors\r\nPeaceful neighborhood\r\nGood road connectivity\r\nClose to schools, shops, hospitals, and other facilities\r\nIdeal for family living",
+    "price": "9400000.00",
+    "location": "",
+    "address": "Race course, coimbatore",
+    "agent": [
+      "krithika"
+    ],
+    "property_type": 2
+  }
+}
+]
